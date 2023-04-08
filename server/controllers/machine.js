@@ -25,8 +25,8 @@ const updateMachine = async (req, res, next) => {
     const { id } = req.params;
     const payload = req.body;
     try {
-        const newMachine = await MachineModel.findOne({ id });
-        const result = await MachineModel.findByIdAndUpdate({_id:newMachine._id}, { $set: payload }, { new: true });
+
+        const result = await MachineModel.findByIdAndUpdate(id, { $set: payload }, { new: true });
         res.send(result)
     } catch (error) {
         next(error)
@@ -36,8 +36,8 @@ const updateMachine = async (req, res, next) => {
 const deleteMachine = async (req, res, next) => {
     const { id } = req.params;
     try {
-        const newMachine = await MachineModel.findOne({ id });
-        const result = await MachineModel.findByIdAndUpdate({_id:newMachine._id}, { isDeleted: true }, { new: true });
+  
+        const result = await MachineModel.findByIdAndUpdate(id, { isDeleted: true }, { new: true });
         res.send(result)
     } catch (error) {
         next(error)

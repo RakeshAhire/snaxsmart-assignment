@@ -10,7 +10,7 @@ const { createError } = require("../utils/customError");
 const getAllTransaction = async (req, res, next) => {
     // machineid , employee's cardNo and Date or transaction.
 
-    const { machineid, cardNo, startDate, endDate, ...others } = req.query
+    const { machineid, cardNo, startDate, ...others } = req.query
 
     // added conditions if it is available on queries
 
@@ -23,10 +23,10 @@ const getAllTransaction = async (req, res, next) => {
         const employee = await EmployeeModel.findOne({ cardNo });
         conditions.employeeid = employee._id;
     }
-    if (startDate && endDate) {
+    if (startDate) {
         conditions.date = {
             $gte: new Date(startDate),
-            $lte: new Date(endDate),
+            $lte: new Date(startDate),
         };
     }
 
