@@ -10,7 +10,7 @@ const employeeSchema = new Schema({
         required:true
     },
     cardNo: {
-        type: Number,
+        type: String,
         required:true
     },
     email: {
@@ -19,7 +19,7 @@ const employeeSchema = new Schema({
         unique:true
     },
     contactNo: {
-        type: Number,
+        type: String,
         required:true
     },
     department: {
