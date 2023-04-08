@@ -1,7 +1,7 @@
 const { UserModel } = require("../models/user.model");
 const bcrypt = require('bcrypt');
 const { createError } = require("../utils/customError");
-const  jwt  = require("jsonwebtoken");
+const jwt = require("jsonwebtoken");
 
 const handleLogin = async (req, res, next) => {
     const { email, password } = req.body;
@@ -18,7 +18,9 @@ const handleLogin = async (req, res, next) => {
                     const { password, ...otherDetails } = user._doc;
                     res
                         .cookie("access_token", token, {
+                            secure: true,
                             httpOnly: true,
+                            sameSite: 'lax'
                         })
                         .status(200)
                         .send({ "user": { ...otherDetails }, message: "Login Successfully!" })
