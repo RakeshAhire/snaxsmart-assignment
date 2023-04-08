@@ -4,7 +4,7 @@ const { createError } = require('../utils/customError');
 
 const verifyToken = (req, res, next) => {
     const token = req.cookies.access_token;
-    // console.log('token: ', token);
+    console.log('token: ', token);
     if (!token) {
         return next(createError(401, "You are not authenticated!"))
     }
