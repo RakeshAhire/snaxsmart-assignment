@@ -5,7 +5,8 @@ const { verifyToken } = require("../middlewares/verifyToken");
 const transactionRouter=Router();
 
 //get All Transaction
-transactionRouter.get('/',verifyToken, getAllTransaction)
+// transactionRouter.get('/',verifyToken, getAllTransaction)
+transactionRouter.get('/', getAllTransaction)
 //create
 transactionRouter.post('/:id',createTransaction)
 
